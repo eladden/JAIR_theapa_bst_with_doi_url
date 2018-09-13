@@ -1,8 +1,9 @@
-% newtheapa.bst -- Version 2.6 (September 2018)
-%    By Elad Denenberg
+% newtheapa.bst --- Version 2.6.1 (September 2018)
+%    by Elad Denenberg (eladden
 
 %$$$ theapa.bst $$$ --- Version 2.5.1 (May 1992)
 %    by Young U. Ryu (young@emx.utexas.edu)
+
 % copyright (C) 1991, 1992.
 %    Young U. Ryu
 % newapa.bst 2.0 - 1991.
@@ -220,15 +221,19 @@ FUNCTION {new.block}
 FUNCTION {write.doi}
 { doi empty$
 	{ "" }
-	{ new.block "DOI:" doi * "" * }
+	{ new.block "DOI:~" doi * "" * }
 if$
 }
 
 FUNCTION {write.url}
-{ url empty$
-    { "" }
-    { new.block "\url{" url * "}" * }
- if$
+{ doi empty$
+	{ url empty$
+    	{ "" }
+	    { new.block "\url{" url * "}" * }
+ 	if$
+	}
+	{ "" }
+	if$
 }
 
 FUNCTION {new.sentence}
