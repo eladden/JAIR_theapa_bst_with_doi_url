@@ -19,6 +19,7 @@
 % Version 2.6 Update Notes (September 2018)
 % 
 %    - Added doi and url options to the style
+%    - If a paper has more than 3 authors \cite produces (FirstAuthor et al., Year)
 
 % Version 2.5 Update Notes (April 1992)
 %
@@ -1193,9 +1194,9 @@ FUNCTION {format.full.lab.names}
     { s nameptr "{vv~}{ll}" format.name$ 't :=
       nameptr #1 >
       {
-      nameptr #3
+      nameptr #1
       #1 + =
-      numnames #5
+      numnames #3
       > and
       { "others" 't :=
       #1 'namesleft := }
