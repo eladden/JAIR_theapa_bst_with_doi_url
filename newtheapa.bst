@@ -1192,7 +1192,16 @@ FUNCTION {format.full.lab.names}
     { namesleft #0 > }
     { s nameptr "{vv~}{ll}" format.name$ 't :=
       nameptr #1 >
-        { namesleft #1 >
+      {
+      nameptr #3
+      #1 + =
+      numnames #5
+      > and
+      { "others" 't :=
+      #1 'namesleft := }
+      'skip$
+      if$
+      namesleft #1 >
             { ", " * t * }
             { numnames #2 >
                 { "," * }
